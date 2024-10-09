@@ -209,7 +209,7 @@
         
         document.getElementById('bypassBtn').addEventListener('click', function() {
     const link = document.getElementById('linkInput').value;
-    fetch(`http://127.0.0.1:8080/api/fluxus?url=${encodeURIComponent(link)}`)
+    fetch(`https://ducktestflu.vercel.app/api/fluxus?url=${encodeURIComponent(link)}`)
         .then(response => {
             if (!response.ok) {
                 throw new Error('Network response was not ok');
@@ -222,9 +222,9 @@
                 // Nếu có thông điệp lỗi từ API
                 document.getElementById('result').innerText = data.message;
             } else {
-                const result = data.result; // Sử dụng trường result
+                const key = data.key; // Sử dụng trường result
                 const button = document.createElement('button');
-                button.innerText = 'Key: ' + result;
+                button.innerText = 'Key: ' + key;
                 button.style.backgroundColor = 'blue';
                 button.style.color = 'white';
                 button.style.border = '1px solid transparent';
@@ -236,10 +236,10 @@
                 button.addEventListener('click', function() {
                     navigator.clipboard.writeText(result)
                         .then(() => {
-                            document.getElementById('result').innerText = 'Đã sao chép key!';
+                            document.getElementById('key').innerText = 'Đã sao chép key!';
                         })
                         .catch(err => {
-                            document.getElementById('result').innerText = 'Lỗi sao chép: ' + err.message;
+                            document.getElementById('key').innerText = 'Lỗi sao chép: ' + err.message;
                         });
                 });
 
