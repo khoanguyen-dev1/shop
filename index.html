@@ -1,21 +1,17 @@
 <!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>UwU</title>
-        <link rel="icon" href="favicon.ico" type="image/x-icon">
-        <style>
-            body {
-                font-family: Arial, sans-serif;
-                text-align: center;
-                padding-top: 50px;
-                background-image: url('https://cdn.discordapp.com/attachments/1247883940937601034/1291036397540610182/IMG_20240414_121328.jpg?ex=670145d7&is=66fff457&hm=5734d426e107f81d8915282b9d82825c0812b51edd78affce3c5bccf8252f27d&');
-                background-size: cover;
-                background-position: center;
-                overflow: hidden;
-                margin: 0;
-            }
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UwU</title>
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            padding: 20px;
+            text-align: center;
+        }
         .rain-container {
             position: absolute;
             width: 100%;
@@ -53,23 +49,49 @@
             border-radius: 10px;
             padding: 20px;
             margin: 20px;
-            background-color: rgba(255, 255, 255, 0.1);
+            background-color: rgb(255, 255, 255);
             display: inline-block;
-            color: white;
+            color: rgb(255, 0, 0);
         }
 
         .heading {
-            background-color: rgba(255, 255, 255, 0.3); /* Màu nền nhẹ */
-            padding: 5px 10px; /* Khoảng cách giữa chữ và viền nền */
-            border-radius: 5px; /* Bo tròn viền nền */
-            display: inline-block; /* Để nền có kích thước phù hợp với chữ */
+            background-color: rgba(255, 255, 255, 0.3);
+            padding: 5px 10px;
+            border-radius: 5px;
+            display: inline-block;
+        }
+
+        .tab {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #007BFF;
+            color: white;
+            border-radius: 5px 5px 0 0;
+            cursor: pointer;
+            margin: 0 5px;
+        }
+
+        .tab.active {
+            background-color: #0056b3;
+        }
+
+        .tab-content {
+            display: none;
+            padding: 20px;
+            border: 2px solid #303030;
+            border-radius: 0 0 10px 10px;
+            background-color: rgb(255, 255, 255);
+        }
+
+        .tab-content.active {
+            display: block;
         }
 
         .redirect-btn {
             padding: 10px 20px;
             font-size: 16px;
-            background-color: #007BFF; /* Màu nền nút */
-            color: white;
+            background-color: #00fff2;
+            color: rgba(168, 240, 0, 0.644);
             border: none;
             border-radius: 5px;
             cursor: pointer;
@@ -77,15 +99,11 @@
             z-index: 1;
         }
 
-        .redirect-btn:hover {
-            background-color: #0056b3; /* Màu nền khi hover */
-        }
-
         .download-btn {
             padding: 10px 20px;
             font-size: 16px;
-            background-color: #007BFF; /* Màu nền liên kết */
-            color: white;
+            background-color: #007BFF;
+            color: rgb(0, 255, 170);
             border-radius: 5px;
             display: inline-block;
             margin-top: 10px;
@@ -93,45 +111,148 @@
         }
 
         .download-btn:hover {
-            background-color: #0056b3; /* Màu nền khi hover */
+            background-color: #0056b3;
+        }
+
+        /* Styles cho mini-menu */
+        .mini-menu {
+            position: fixed;
+            top: 10px;
+            left: 10px;
+            background-color: rgba(255, 255, 255, 0.9);
+            padding: 5px 10px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
         }
     </style>
 </head>
 <body>
-    <div class="rain-container">
-        <!-- Các hạt mưa ở đây -->
-    </div>
-
     <h1>Nhấn nút để chuyển hướng</h1>
     
-    <div class="button-container">
-        <p class="heading">Những thứ liên quan</p>
-        <button class="redirect-btn" id="btn1">Server Discord</button>
-        <button class="redirect-btn" id="btn2">Shop DuckShogun</button>
+    <!-- Tab -->
+    <div class="mini-menu">
+        <div class="tab active" onclick="showSection('home')">Client</div>
+        <div class="tab" onclick="showSection('about')">Bypass</div>
     </div>
 
-    <div class="button-container">
-        <p>Tải xuống:</p>
-        <a href="#" class="download-btn" id="downloadBtn">Tải xuống FluxusV642.apk</a>
+    <!-- Phần home -->
+    <div id="home" class="tab-content active">
+        <div class="button-container">
+            <p>Fluxus:</p>
+            <a href="#" class="download-btn" id="downloadBtn">Tải xuống FluxusV642.apk</a>
+        </div>
+        <div class="button-container">
+            <p>Delta:</p>
+            <a href="#" class="download-btn" id="Delta">Tải xuống Delta-2.644.704.apk</a>
+        </div>
+        <div class="button-container">
+            <p>Trygon:</p>
+            <a href="#" class="download-btn" id="Trigon">Tải xuống Trigon_2.642.apk</a>
+        </div>
+        <div class="button-container">
+            <p>Cryptic:</p>
+            <a href="#" class="download-btn" id="Cryptic">Tải xuống Cryptic-1.0.642.635.apk</a>
+        </div>
+    </div>
+
+    <!-- Phần Bypass -->
+    <div id="about" class="tab-content">
+        <h2>Bypass</h2>
+        <div class="button-container">
+            <input type="text" id="linkInput" placeholder="Nhập liên kết tại đây" />
+            <button id="bypassBtn" class="download-btn">Gửi</button>
+        </div>
+        <div id="result" style="margin-top: 20px;"></div>
     </div>
 
     <script>
-        const btn1 = document.getElementById('btn1');
-        const btn2 = document.getElementById('btn2');
-        const downloadBtn = document.getElementById('downloadBtn');
-
-        btn1.addEventListener('click', function() {
-            window.location.href = 'https://discord.gg/ua9pmXg8';
-        });
-
-        btn2.addEventListener('click', function() {
-            window.location.href = 'https://duckshogun.store/';
-        });
+        const downloadBtn = document.getElementById('downloadBtn');  
+        const Delta = document.getElementById('Delta'); 
+        const Trigon = document.getElementById('Trigon');  
+        const Cryptic = document.getElementById('Cryptic');
 
         downloadBtn.addEventListener('click', function(event) {
-            event.preventDefault(); // Ngăn chặn hành vi mặc định
+            event.preventDefault();
             window.open('https://www.mediafire.com/file/04b6s0v7r14vko6/FluxusV642.apk/file', '_blank');
         });
+
+        Delta.addEventListener('click', function(event) {
+            event.preventDefault();
+            window.open('https://www.mediafire.com/file/y0qx8gjcd5d3ywk/Delta-2.644.704.apk/file', '_blank');
+        });
+
+        Trigon.addEventListener('click', function(event) {
+            event.preventDefault();
+            window.open('https://www.mediafire.com/file/w0huykudkmtwpey/Trigon_2.642.apk/file', '_blank');
+        });
+
+        Cryptic.addEventListener('click', function(event) {
+            event.preventDefault();
+            window.open('https://www.mediafire.com/file/cuhakl7unpc8a2c/Cryptic-1.0.642.635.apk/file', '_blank');
+        });
+
+        function showSection(section) {
+            // Ẩn tất cả các phần
+            document.querySelectorAll('.tab-content').forEach((content) => {
+                content.classList.remove('active');
+            });
+
+            // Hiện phần tương ứng
+            document.getElementById(section).classList.add('active');
+
+            // Cập nhật trạng thái của tab
+            document.querySelectorAll('.tab').forEach((tab) => {
+                tab.classList.remove('active');
+            });
+            document.querySelector(`.tab[onclick="showSection('${section}')"]`).classList.add('active');
+        }
+        
+        document.getElementById('bypassBtn').addEventListener('click', function() {
+    const link = document.getElementById('linkInput').value;
+    fetch(`http://127.0.0.1:8080/api/fluxus?url=${encodeURIComponent(link)}`)
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            return response.json();
+        })
+        .then(data => {
+            console.log(data); // Kiểm tra dữ liệu
+            if (data.message) {
+                // Nếu có thông điệp lỗi từ API
+                document.getElementById('result').innerText = data.message;
+            } else {
+                const result = data.result; // Sử dụng trường result
+                const button = document.createElement('button');
+                button.innerText = 'Key: ' + result;
+                button.style.backgroundColor = 'blue';
+                button.style.color = 'white';
+                button.style.border = '1px solid transparent';
+                button.style.borderRadius = '5px';
+                button.style.padding = '5px 10px';
+                button.style.cursor = 'pointer';
+                button.style.marginTop = '10px';
+
+                button.addEventListener('click', function() {
+                    navigator.clipboard.writeText(result)
+                        .then(() => {
+                            document.getElementById('result').innerText = 'Đã sao chép key!';
+                        })
+                        .catch(err => {
+                            document.getElementById('result').innerText = 'Lỗi sao chép: ' + err.message;
+                        });
+                });
+
+                const resultDiv = document.getElementById('result');
+                resultDiv.innerHTML = '';
+                resultDiv.appendChild(button);
+            }
+        })
+        .catch(error => {
+            document.getElementById('result').innerText = 'Error: ' + error.message;
+        });
+});
     </script>
 </body>
 </html>
+
